@@ -1,0 +1,8 @@
+@use '../variables' as var;
+
+footer
+{
+	background: var.$primary-color;
+	color: #fff;
+	padding: 1rem;
+}

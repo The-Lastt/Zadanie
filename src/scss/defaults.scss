@@ -1,0 +1,50 @@
+@use 'variables' as var;
+
+body
+{
+	font-family: system-ui, sans-serif;
+	line-height: 1.5;
+	margin: 0;
+	min-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
+	box-sizing: border-box;
+	display: flex;
+	flex-flow: column;
+}
+
+.page-contents
+{
+	flex-grow: 1;
+}
+
+.section
+{
+	max-width: var.$page-width-xl;
+	margin: auto;
+	padding: 0 var.$section-padding;
+}
+
+img
+{
+	max-width: 100%;
+	height: auto;
+}
+
+input,
+button,
+textarea
+{
+	border-radius: 0;
+	font-size: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	border: 1px solid #0008;
+}
+
+input[type="submit"],
+button
+{
+	background: var.$primary-color;
+	color: #fff;
+	padding: 0.25em 1em;
+	cursor: pointer;
+}

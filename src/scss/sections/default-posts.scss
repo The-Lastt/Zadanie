@@ -1,0 +1,21 @@
+section.default-posts
+{
+	.post
+	{
+		display: flex;
+		gap: 1rem;
+		padding-bottom: 1rem;
+		margin-bottom: 1rem;
+		border-bottom: 1px solid #0002;
+
+		h3
+		{
+			margin-top: 0;
+		}
+
+		img
+		{
+			max-width: 256px;
+		}
+	}
+}

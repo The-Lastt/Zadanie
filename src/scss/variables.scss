@@ -1,0 +1,36 @@
+$page-width-xl: 1200px;
+$page-width-lg: 1000px;
+$page-width-md:  800px;
+$page-width-sm:  500px;
+$mobile-nav-breakpoint: $page-width-md;
+
+$section-padding: 30px;
+
+$primary-color:  #333;
+$primary-color2: #444;
+
+/** BREAKPOINTS MIXINS */
+@mixin screen-xl()
+{
+	@media (max-width: calc($page-width-xl + (2 * $section-padding))) { @content; }
+}
+
+@mixin screen-lg()
+{
+	@media (max-width: $page-width-lg) { @content; }
+}
+
+@mixin screen-md()
+{
+	@media (max-width: $page-width-md) { @content; }
+}
+
+@mixin screen-sm()
+{
+	@media (max-width: $page-width-sm) { @content; }
+}
+
+@mixin screen-mobile()
+{
+	@media (max-width: $mobile-nav-breakpoint) { @content; }
+}

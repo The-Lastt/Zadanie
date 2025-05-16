@@ -1,0 +1,11 @@
+/.git
+/_docs
+/node_modules
+/src
+/dev
+/dist/theme.zip
+/.gitignore
+/.ftpignore
+/package-lock.json
+/package.json
+/README.md
