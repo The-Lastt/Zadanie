@@ -1,27 +1,36 @@
 <?php
 /**
- * Template Name: Strona głowna
+ * Template Name: Strona główna
  */
 
-enqueue_sections('home');
+add_action('wp_enqueue_scripts', function(){
+	px_enqueue_style('page-home', '/dist/css/home.css', [ 'default' ]); 
+});
 
 get_header(); ?>
 
 <div class="page-home">
-
-	<?php the_section('slider') ?>
-
-	<section class="header">
-		<div class="section">
-			<h1>Strona główna</h1>
+<section class="default-title-header">
+	<div class="section">
+		<h1><?php the_title(); ?></h1>
+		<nav class="breadcrumbs">
+			<ul>
+				<li><a href="/"><?php _e('Strona główna', 'template'); ?></a></li>
+				<li><?php the_title() ?></li>
+			</ul>
+		</nav>
+	</div>
+</section>
+<section class="contact-section">
+	<div class="section">
+		<div class="contact-wrapper">
+			<div class="contact-form">
+				<h3><?php _e('Skontaktuj się z nami', 'template'); ?></h3>
+				<?php get_template_part('template-parts/form/contact-form'); ?>
+			</div>
 		</div>
-	</section>
-
-	<?php the_section('text-area') ?>
-	
-	<?php the_section('test') ?>
-	<?php the_section('gallery') ?>
-	<?php the_section('attractions') ?>
+	</div>
+</section>
 
 </div>
 

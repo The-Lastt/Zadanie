@@ -17,7 +17,7 @@
 			<?php endif; ?>
 		</div>
 		<div class="section footer-bottom">
-			Copyright <?= date('Y') ?> © <?php bloginfo('name') ?> | Realizacja <a href="https://proadax.pl" target="_blank">Proadax.pl</a>
+			Copyright <?= date('Y') ?> © <?php bloginfo('name') ?>
 		</div>
 	</footer>
 

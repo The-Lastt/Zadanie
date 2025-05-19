@@ -2,12 +2,12 @@
 
 add_action('wp_enqueue_scripts', function ()
 {
-	wp_enqueue_script('dev-js', get_stylesheet_directory_uri() . '/dev/dev-tools.js', [], hash('xxh64', (filemtime(get_stylesheet_directory() . '/dev/dev-tools.js'))), [ 'strategy' => 'defer', 'in_footer' => true ]);
+	wp_enqueue_script('dev-js', get_stylesheet_directory_uri() . '/dev/dev-tools.js', [], hash('md5', (filemtime(get_stylesheet_directory() . '/dev/dev-tools.js'))), [ 'strategy' => 'defer', 'in_footer' => true ]);
 }, 100);
 
 function px_dev_stylesheet_file_version($file)
 {
-	return hash('xxh64', (filemtime($file)));
+	return hash('md5', (filemtime($file)));
 }
 
 function px_dev_stylesheet_version()

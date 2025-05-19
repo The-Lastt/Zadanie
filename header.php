@@ -10,7 +10,6 @@
 <head>
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="<?= esc_attr(get_field('site_description', 'options')) ?>">
 
 	<?php wp_head(); ?>
 
@@ -33,28 +32,51 @@
 			</div>
 
 			<div class="header-elements">
-				<?php if (has_nav_menu('primary_menu')) : ?>
-					<?php
-					wp_nav_menu(
-						[
-							'theme_location'  => 'primary_menu',
-							'container'       => 'nav',
-							'container_class' => 'main-menu'
-						]
-					);
-					?>
-				<?php endif; ?>
-
-				<div class="search-box">
-					<button class="menu-item">🔎</button>
-					<div class="search-form-box">
-						<form role="search" method="get" class="search-form" action="<?= home_url( '/' ); ?>">
-							<input type="search" class="search-field" placeholder="Szukaj…" value="<?= esc_html(get_search_query()) ?>" name="s" title="Szukaj:" />
-							<input type="submit" class="search-submit" value="Szukaj" />
-						</form>
-					</div>
+				<div class="header-menu-container">
+					<?php if (has_nav_menu('primary_menu')) : ?>
+						<?php
+						wp_nav_menu(
+							[
+								'theme_location'  => 'primary_menu',
+								'container'       => 'nav',
+								'container_class' => 'main-menu'
+							]
+						);
+						?>
+					<?php endif; ?>
 				</div>
 			</div>
+			<div class="header-mobile">
+				<button aria-label="otwórz menu" class="mobile-menu-toggle">
+					<div></div>
+					<div></div>
+					<div></div>
+				</button>
+			</div>
+			<div class="mobile-menu">
+					<div class="menu-containter">
+						<?php if (has_nav_menu('primary_menu')) : ?>
+							<?php
+							wp_nav_menu(
+								[
+									'theme_location'  => 'primary_menu',
+									'container'       => 'nav',
+									'container_class' => 'main-menu',
+									'after'           => '<button class="expand" aria-label="rozwiń podmenu"></button>'
+								]
+							);
+							?>
+						<?php endif; ?>
+					</div>
+
+					<div class="footer-buttons">
+						<div class="action-buttons">
+
+
+						</div>
+					</div>
+			</div>
+
 		</div>
 
 	</div>

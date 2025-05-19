@@ -1,14 +1,20 @@
 @use 'variables' as var;
-
+html{
+    overflow-x: hidden;
+}
 body
 {
-	font-family: system-ui, sans-serif;
-	line-height: 1.5;
+	font-family: 'Arial', sans-serif;
+	font-weight: 400;
+	font-size: 18px; 
+	background: #fff;
+	line-height: 24px;  
 	margin: 0;
 	min-height: calc(100vh - var(--wp-admin--admin-bar--height, 0px));
 	box-sizing: border-box;
 	display: flex;
-	flex-flow: column;
+	flex-flow: column;  
+	
 }
 
 .page-contents
@@ -29,10 +35,15 @@ img
 	height: auto;
 }
 
+a{
+	transition: all 0.5s ease;
+	text-decoration: none;
+}
+
 input,
 button,
-textarea
-{
+textarea 
+{ 
 	border-radius: 0;
 	font-size: inherit;
 	font-family: inherit;
@@ -47,4 +58,269 @@ button
 	color: #fff;
 	padding: 0.25em 1em;
 	cursor: pointer;
+}
+button, .button{
+	background: var.$primary-color;
+	border: 1px solid var.$primary-color;
+	color: #fff;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 24px;
+	border-radius: 10px;
+	min-width: 198px;
+	text-decoration: none;
+	padding: 10px 15px;
+	position: relative;
+	transition: all 0.5s ease;
+	display: inline-block;
+	text-align: center;
+	text-transform: uppercase;
+	box-sizing: border-box;
+	box-shadow: 0px 15px 18px 0px rgba(38, 90, 166, 0.36);
+	&:hover{
+		background: #fff;
+		color: var.$text-color;
+	}
+}
+
+.button2{
+	background: var.$primary-color2;
+	color: #fff;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 700;
+	border-radius: 20px;
+	text-decoration: none;
+	padding: 7px 16px 7px 16px;
+	position: relative; 
+	transition: all 0.5s ease;
+	&:hover{
+		background: var.$primary-color;
+	}
+	&.icon{
+		padding: 7px 16px 7px 38px;
+		svg{
+			fill: var.$primary-color2;
+			width: 27px;
+			height: 27px;
+			background: #fff;
+			border-radius: 100%;
+			display: inline-block;
+			box-sizing: border-box;
+			padding: 4px;
+			position: absolute;
+			left: 3px;
+			top: 2px;
+		}
+	}
+}
+
+.btn-outline{
+	background: #fff;
+	color: var.$text-color;
+	border: 1px solid var.$primary-color;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 24px;
+	border-radius: 10px;
+	min-width: 198px;
+	text-decoration: none;
+	padding: 10px 15px;
+	position: relative;
+	transition: all 0.5s ease;
+	display: inline-block;
+	text-align: center;
+	text-transform: uppercase;
+	box-sizing: border-box;
+	&:hover{
+		background: var.$primary-color;
+		color: #fff;
+	}
+}
+
+h1{
+	font-size: 50px;
+	font-weight: 400;
+	color: var.$primary-color;
+	line-height: 56px;
+	margin: 15px 0;
+	strong{
+		font-weight: 900;
+	}
+	@include var.screen-mobile
+	{
+		font-size: 30px;
+		line-height: 36px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+}
+ul{
+	li::marker{
+		color: var.$primary-color;
+	}
+}
+h2{
+	font-size: 30px;
+	font-weight: 700;
+	line-height: normal;
+	color: var.$primary-color;
+	position: relative;
+	margin: 10px 0;
+	@include var.screen-mobile
+	{
+		font-size: 26px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+}
+.section-title{
+
+}
+h3{
+	font-size: 22px;
+	line-height: 28px;
+	color: var.$text-color;
+	font-weight: 700;
+	margin: 10px 0;
+	@include var.screen-mobile
+	{
+		font-size: 20px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+}
+h4{
+	font-size: 20px;
+	line-height: normal;
+	color: var.$text-color;
+	font-weight: 700;
+	margin: 10px 0;
+	@include var.screen-mobile
+	{
+		font-size: 22px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+}
+h5{
+	font-size: 18px;
+	line-height: normal;
+	color: var.$text-color;
+	font-weight: 700;
+	margin: 10px 0;
+	@include var.screen-mobile
+	{
+		font-size: 20px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+}
+
+.contents-404{
+	.button{
+		padding: 10px 16px;
+	}
+}
+nav.breadcrumbs
+{
+	@include var.screen-md
+	{
+		font-size: 0.9em;
+	}
+
+	@include var.screen-sm
+	{
+		font-size: 0.8em;
+	}
+
+	ul
+	{
+		list-style-type: none;
+		display: flex;
+		line-height: 24px;
+		margin: 0;
+		padding: 0;
+  		overflow: hidden;
+		flex-wrap: wrap;
+	}
+
+	li
+	{
+		overflow: hidden;
+		text-overflow: ellipsis;
+		flex-shrink: 0;
+		font-size: 14px;
+		font-weight: 300;
+	}
+
+	li::after
+	{
+		content: "/";
+		opacity: 0.8;
+		margin: 0 0.25em;
+	}
+	li:last-child{
+		font-weight: 700;
+	}
+	li:last-child::after
+	{
+		content: none;
+	}
+
+	a
+	{
+		text-decoration: none;
+		color: inherit;
+		display: inline-block;
+		transition: all 0.5s ease;
+
+
+		&:hover,
+		&:focus
+		{
+			color: var.$primary-color;
+
+		}
+	}
+}
+.default-title-header{
+	background: var.$primary-color;
+	color: #fff;
+	min-height: 100px;
+	@include var.screen-mobile
+	{
+		min-height: 0;
+		padding: 10px 0 6px 0;
+	}
+	h1{
+		margin: 0 0;
+		color: #fff;
+		font-size: 30px;
+		line-height: 36px;
+		font-weight: 700;
+		@include var.screen-mobile
+		{
+			font-size: 28px;
+		}
+	}
+	.section{
+		display: flex;
+		justify-content: space-between;
+		min-height: 100px;
+		align-items: center;
+		@include var.screen-mobile
+		{
+			flex-direction: column;
+			min-height: 0;
+		}
+	}
+	margin-bottom: 30px;
+	margin-top: 0px;
+	@include var.screen-mobile
+	{
+		margin-bottom: 10px;
+	}
 }

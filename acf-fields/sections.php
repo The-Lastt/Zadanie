@@ -11,7 +11,7 @@ function assign_field_keys(&$fields, $prefix)
 	foreach ($fields as &$field)
 	{
 		if (!isset($field['key']))
-			$field['key'] = 'field_' . hash('xxh64', ($prefix ? $prefix . '/' : '') . ($field['name'] ? $field['name'] : $field['key']));
+			$field['key'] = 'field_' . hash('md5', ($prefix ? $prefix . '/' : '') . ($field['name'] ? $field['name'] : $field['key']));
 
 		if (isset($field['sub_fields']))
 		{

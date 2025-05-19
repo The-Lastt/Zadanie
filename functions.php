@@ -57,7 +57,6 @@ add_action('after_setup_theme', function()
 	);
 
 	// Registering post types
-	require_once __DIR__ . '/post-types/attraction.php';
 });
 
 
@@ -86,7 +85,7 @@ function px_enqueue_script($handle, $src = '', $deps = [], $ver = true, $args = 
 	if ($ver === true)
 	{
 		if (file_exists(filemtime(get_template_directory() . $src)))
-			$ver = substr(hash('xxh64', filemtime(get_template_directory() . $src)), 0, 8);
+			$ver = substr(hash('md5', filemtime(get_template_directory() . $src)), 0, 8);
 		else
 			$ver = false;
 	}
@@ -99,7 +98,7 @@ function px_enqueue_style($handle, $src = '', $deps = [], $ver = true, $media = 
 	if ($ver === true)
 	{
 		if (file_exists(filemtime(get_template_directory() . $src)))
-			$ver = substr(hash('xxh64', filemtime(get_template_directory() . $src)), 0, 8);
+			$ver = substr(hash('md5', filemtime(get_template_directory() . $src)), 0, 8);
 		else
 			$ver = false;
 	}
@@ -160,6 +159,8 @@ function the_section($section_name)
 
 require_once __DIR__ . '/acf-fields/acf-init.php';
 
+require_once __DIR__ . '/modules/utils.php';
+require_once __DIR__ . '/inc/FormGenerator.php';
 require_once __DIR__ . '/modules/analytics.php';
 #endregion
 
@@ -235,4 +236,49 @@ if (WP_DEBUG)
 	if (file_exists(__DIR__ . '/dev/dev-tools.php'))
 		require_once __DIR__ . '/dev/dev-tools.php';
 }
+#endregion
+
+#region Form
+
+#region Form
+
+add_action('rest_api_init', function () {
+	register_rest_route('custom-form/v1', '/submit/', [
+		'methods' => 'POST',
+		'callback' => 'handle_custom_form_submission',
+		'permission_callback' => '__return_true',
+	]);
+});
+
+function handle_custom_form_submission($request) {
+	$params = $request->get_json_params();
+	$errors = [];
+
+	if (empty($params['name']) || strlen($params['name']) < 3 || strlen($params['name']) > 50) {
+		$errors['name'] = 'Imię musi zawierać od 3 do 50 znaków.';
+	}
+
+	if (empty($params['email']) || !is_email($params['email'])) {
+		$errors['email'] = 'Podaj poprawny adres e-mail.';
+	}
+
+	if (!empty($params['message']) && strlen($params['message']) > 500) {
+		$errors['message'] = 'Wiadomość nie może mieć więcej niż 500 znaków.';
+	}
+
+	if (!empty($params['phone']) && !preg_match('/^\+?[0-9\s\-]{7,15}$/', $params['phone'])) {
+		$errors['phone'] = 'Podaj poprawny numer telefonu.';
+	}
+
+	if (!empty($errors)) {
+		return new WP_REST_Response(['success' => false, 'errors' => $errors], 400);
+	}
+
+	return new WP_REST_Response(['success' => true, 'message' => 'Formularz został wysłany.'], 200);
+}
+
+#endregion
+
+
+
 #endregion

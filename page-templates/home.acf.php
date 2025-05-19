@@ -2,14 +2,14 @@
 
 return [
 	[
-		'label' => 'Strona głowna',
-		'name' => 'tab',
+		'label' => 'Formularz',
+		'name' => 'form-tab',
 		'type' => 'tab'
 	],
+
 	[
-		'label' => 'Jakiś tekst na stronie głownej',
-		'name' => 'text',
-		'type' => 'text',
-		'default_value' => 'Lorem ipsum...'
-	]
+		'label' => 'Formularz',
+		'name' => 'form',
+		'type' => 'wysiwyg'
+	],					
 ];

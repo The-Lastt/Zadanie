@@ -1,13 +1,15 @@
 $page-width-xl: 1200px;
-$page-width-lg: 1000px;
+$page-width-lg: 1024px;
 $page-width-md:  800px;
 $page-width-sm:  500px;
-$mobile-nav-breakpoint: $page-width-md;
+$mobile-nav-breakpoint: $page-width-lg;
 
-$section-padding: 30px;
+$section-padding: 15px;
 
-$primary-color:  #333;
-$primary-color2: #444;
+$text-color:  #000000;
+$primary-color:  #265aa6;
+$primary-color2: #fb8f3d; 
+
 
 /** BREAKPOINTS MIXINS */
 @mixin screen-xl()
@@ -19,6 +21,11 @@ $primary-color2: #444;
 {
 	@media (max-width: $page-width-lg) { @content; }
 }
+
+@mixin screen-lg-to-xl()  
+{
+	@media (min-width: calc($page-width-lg + 1px)) and (max-width: $page-width-xl) { @content; }
+} 
 
 @mixin screen-md()
 {
